@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://c30vyf8yia2t2"]
+
+[ext_resource type="Script" uid="uid://cjv4uf03m6kj7" path="res://UI/Backgrounds/Caves/cave_background.gd" id="1_4wqqj"]
+[ext_resource type="Texture2D" uid="uid://ca32pgyiy0cnc" path="res://assets/CavesTileSet/background1.png" id="1_l4al1"]
+[ext_resource type="Texture2D" uid="uid://llxmqwgx7520" path="res://assets/CavesTileSet/background2.png" id="2_hjtep"]
+[ext_resource type="Texture2D" uid="uid://mvroh1qbfejd" path="res://assets/CavesTileSet/background3.png" id="3_4wqqj"]
+[ext_resource type="Texture2D" uid="uid://dbrhrefgmcr0p" path="res://assets/CavesTileSet/background4a.png" id="4_kcpi7"]
+
+[node name="CaveBackground" type="CanvasLayer"]
+layer = -1
+script = ExtResource("1_4wqqj")
+
+[node name="1" type="Parallax2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="1"]
+offset_right = 1380.0
+offset_bottom = 825.0
+texture = ExtResource("1_l4al1")
+
+[node name="2" type="Parallax2D" parent="."]
+repeat_size = Vector2(1380, 0)
+repeat_times = 6
+
+[node name="TextureRect" type="TextureRect" parent="2"]
+offset_right = 1380.0
+offset_bottom = 825.0
+texture = ExtResource("2_hjtep")
+
+[node name="3" type="Parallax2D" parent="."]
+repeat_size = Vector2(1380, 0)
+repeat_times = 6
+
+[node name="TextureRect" type="TextureRect" parent="3"]
+offset_right = 1380.0
+offset_bottom = 825.0
+texture = ExtResource("3_4wqqj")
+
+[node name="4" type="Parallax2D" parent="."]
+repeat_size = Vector2(1380, 0)
+repeat_times = 6
+
+[node name="TextureRect" type="TextureRect" parent="4"]
+offset_right = 1380.0
+offset_bottom = 825.0
+texture = ExtResource("4_kcpi7")

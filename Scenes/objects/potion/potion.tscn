@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://234wmaecqp6n"]
+
+[ext_resource type="Texture2D" uid="uid://cgq0bpp5vwg8m" path="res://assets/UI/Player_UI/potion.png" id="1_hyfih"]
+
+[node name="Sprite2D" type="Sprite2D"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_hyfih")

@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://bpfcdd4bfq20b"]
+
+[ext_resource type="Texture2D" uid="uid://5vbp7b2e7s48" path="res://assets/Background Trees/Backgrounds/BUSH - BACKGROUND.png" id="1_7q7cs"]
+[ext_resource type="Script" uid="uid://c2ldjq8d1m37s" path="res://UI/Backgrounds/blue_trees_background.gd" id="1_su1je"]
+[ext_resource type="Texture2D" uid="uid://wuxegnyuof3p" path="res://assets/Background Trees/Backgrounds/VINES - Second.png" id="2_7dmfa"]
+[ext_resource type="Texture2D" uid="uid://c62iwukhddkwa" path="res://assets/Background Trees/Backgrounds/WOODS - Fourth.png" id="3_su1je"]
+[ext_resource type="Texture2D" uid="uid://dafmq1hedbmvp" path="res://assets/Background Trees/Backgrounds/WOODS - Third.png" id="4_tlgu7"]
+[ext_resource type="Texture2D" uid="uid://bnvcpwb2c04bh" path="res://assets/Background Trees/Backgrounds/WOODS - Second.png" id="5_lcc2c"]
+[ext_resource type="Texture2D" uid="uid://bibs8jnwdjiir" path="res://assets/Background Trees/Backgrounds/WOODS - First.png" id="6_eccye"]
+
+[node name="BlueTreesBackground" type="CanvasLayer"]
+layer = -1
+script = ExtResource("1_su1je")
+
+[node name="BUSH" type="Parallax2D" parent="."]
+z_index = -1
+
+[node name="TextureRect" type="TextureRect" parent="BUSH"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1380.0
+offset_bottom = 825.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_7q7cs")
+
+[node name="Vines" type="Parallax2D" parent="."]
+z_index = -1
+repeat_size = Vector2(1380, 0)
+repeat_times = 2
+
+[node name="TextureRect" type="TextureRect" parent="Vines"]
+offset_right = 1380.0
+offset_bottom = 825.0
+texture = ExtResource("2_7dmfa")
+
+[node name="WOODS-fourth" type="Parallax2D" parent="."]
+z_index = -1
+repeat_times = 2
+
+[node name="TextureRect" type="TextureRect" parent="WOODS-fourth"]
+offset_right = 1380.0
+offset_bottom = 825.0
+texture = ExtResource("3_su1je")
+
+[node name="WOODS-THIRD" type="Parallax2D" parent="."]
+z_index = -1
+repeat_size = Vector2(1380, 0)
+repeat_times = 2
+
+[node name="TextureRect" type="TextureRect" parent="WOODS-THIRD"]
+offset_right = 1380.0
+offset_bottom = 825.0
+texture = ExtResource("4_tlgu7")
+
+[node name="WOODS-SECOND" type="Parallax2D" parent="."]
+z_index = -1
+repeat_size = Vector2(1380, 0)
+repeat_times = 2
+
+[node name="TextureRect" type="TextureRect" parent="WOODS-SECOND"]
+offset_right = 1380.0
+offset_bottom = 825.0
+texture = ExtResource("5_lcc2c")
+
+[node name="WOODS-First" type="Parallax2D" parent="."]
+z_index = -1
+repeat_size = Vector2(1380, 0)
+repeat_times = 2
+ignore_camera_scroll = true
+
+[node name="TextureRect" type="TextureRect" parent="WOODS-First"]
+offset_right = 1380.0
+offset_bottom = 825.0
+texture = ExtResource("6_eccye")

@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxj1kk3qnr5pr"]
+
+[ext_resource type="Script" uid="uid://caclsb0rkok48" path="res://UI/Backgrounds/MountainsBackground/mountains_background.gd" id="1_r3ptl"]
+[ext_resource type="Texture2D" uid="uid://fcnrwftdrwh" path="res://assets/UI/Backgrounds/Background-Mountains/Platformer - desert/Background/BG-sky.png" id="2_7empo"]
+[ext_resource type="Texture2D" uid="uid://cjsfod46neix1" path="res://assets/UI/Backgrounds/Background-Mountains/Platformer - desert/Background/BG-sun.png" id="3_kb88h"]
+[ext_resource type="Texture2D" uid="uid://ci1l0nffygid0" path="res://assets/UI/Backgrounds/Background-Mountains/Platformer - desert/Background/BG-mountains.png" id="4_xl6i0"]
+[ext_resource type="Texture2D" uid="uid://c4lfri1cmboyq" path="res://assets/UI/Backgrounds/Background-Mountains/Platformer - desert/Background/BG-ruins.png" id="5_traw1"]
+
+[node name="MountainsBackground" type="CanvasLayer"]
+layer = -1
+script = ExtResource("1_r3ptl")
+
+[node name="Sky" type="Parallax2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Sky"]
+offset_right = 1380.0
+offset_bottom = 825.0
+texture = ExtResource("2_7empo")
+
+[node name="Sun" type="Parallax2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Sun"]
+offset_right = 1380.0
+offset_bottom = 825.0
+texture = ExtResource("3_kb88h")
+
+[node name="Mountains" type="Parallax2D" parent="."]
+repeat_size = Vector2(1380, 0)
+repeat_times = 2
+
+[node name="TextureRect" type="TextureRect" parent="Mountains"]
+offset_right = 1380.0
+offset_bottom = 825.0
+texture = ExtResource("4_xl6i0")
+
+[node name="Ruins" type="Parallax2D" parent="."]
+repeat_size = Vector2(1380, 0)
+repeat_times = 2
+
+[node name="TextureRect" type="TextureRect" parent="Ruins"]
+offset_right = 1380.0
+offset_bottom = 825.0
+texture = ExtResource("5_traw1")

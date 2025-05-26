@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvdcclgvlxo6p"]
+
+[ext_resource type="Texture2D" uid="uid://x7i0xasjbe8x" path="res://assets/UI/Player_UI/HealthBar.png" id="1_jlo6v"]
+[ext_resource type="PackedScene" uid="uid://234wmaecqp6n" path="res://Scenes/objects/potion/potion.tscn" id="2_ot7u1"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="HealthBar" type="Sprite2D" parent="."]
+position = Vector2(236, 60)
+scale = Vector2(4, 2.15)
+texture = ExtResource("1_jlo6v")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.072
+anchor_top = 0.082
+anchor_right = 0.2
+anchor_bottom = 0.121
+offset_left = 0.639992
+offset_top = 0.349998
+offset_bottom = 0.174995
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Sprite2D" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_ot7u1")]
+
+[node name="Sprite2D2" parent="MarginContainer/HBoxContainer" instance=ExtResource("2_ot7u1")]
+position = Vector2(40, 1)
