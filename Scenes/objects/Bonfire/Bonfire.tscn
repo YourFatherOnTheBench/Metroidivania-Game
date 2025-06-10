@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://bqhbyxtg6elca"]
+
+[ext_resource type="Script" uid="uid://bmguaisvq8u4j" path="res://Scenes/objects/Bonfire/bonfire.gd" id="1_h4lu0"]
+[ext_resource type="Texture2D" uid="uid://xbpepo3rou64" path="res://assets/Decorations/Bonfire/Bonfire_1.png" id="1_t56kg"]
+[ext_resource type="Texture2D" uid="uid://dvky8ug6220md" path="res://assets/Decorations/Bonfire/Bonfire_2.png" id="2_h4lu0"]
+[ext_resource type="Texture2D" uid="uid://n66bkyfb7rgo" path="res://assets/Decorations/Bonfire/Bonfire_3.png" id="3_ti5uw"]
+[ext_resource type="Texture2D" uid="uid://bxsd1pcemh5xa" path="res://assets/Decorations/Bonfire/Bonfire_4.png" id="4_pkuk0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t56kg"]
+size = Vector2(214, 121)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jh85v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_t56kg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_h4lu0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ti5uw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pkuk0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="Bonfire" type="Area2D"]
+collision_layer = 64
+script = ExtResource("1_h4lu0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 13.5)
+shape = SubResource("RectangleShape2D_t56kg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_jh85v")
+autoplay = "default"
+frame = 1
+frame_progress = 0.468104
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

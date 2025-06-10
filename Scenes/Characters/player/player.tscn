@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b3i0rwmp4prd8"]
+[gd_scene load_steps=35 format=3 uid="uid://b3i0rwmp4prd8"]
 
 [ext_resource type="Texture2D" uid="uid://dar1wseehkp31" path="res://assets/Knight/Idle.png" id="1_01s40"]
 [ext_resource type="Script" uid="uid://dc3qu7si3l0cs" path="res://Scenes/Characters/player/player.gd" id="1_hcia3"]
@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://bygln7ow4dj12" path="res://assets/Knight/Health.png" id="8_qkbvw"]
 [ext_resource type="Texture2D" uid="uid://d2lk7vvud0gx6" path="res://assets/Knight/Death.png" id="9_v64dv"]
 [ext_resource type="Texture2D" uid="uid://dhdc5k77k6j73" path="res://assets/Knight/Attacks.png" id="11_u8erc"]
+[ext_resource type="PackedScene" uid="uid://5bmknv3acakc" path="res://Scenes/objects/keys/F-Key.tscn" id="12_mbef4"]
+[ext_resource type="Script" uid="uid://bo5fei8c8mswx" path="res://Scenes/Characters/player/player_hurt_box.gd" id="12_npudp"]
+[ext_resource type="Script" uid="uid://3j7mndqpjwf0" path="res://Scenes/Characters/player/sword_hit_box.gd" id="13_73kqu"]
 
 [sub_resource type="Animation" id="Animation_hcia3"]
 resource_name = "Death"
@@ -767,8 +770,8 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_npudp"]
 resource_name = "test_attack1"
-length = 0.45
-step = 0.08
+length = 0.6
+step = 0.03
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -812,7 +815,7 @@ tracks/3/path = NodePath("Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
@@ -824,7 +827,7 @@ tracks/4/path = NodePath("SwordHitBox/CollisionShape2D:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.230769, 0.384615),
+"times": PackedFloat32Array(0.375, 0.424242),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -836,7 +839,7 @@ tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.384615),
+"times": PackedFloat32Array(0.6),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -850,7 +853,7 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.230769),
+"times": PackedFloat32Array(0.375),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -860,8 +863,8 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_73kqu"]
 resource_name = "test_attack2"
-length = 0.35
-step = 0.08
+length = 0.5
+step = 0.02
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -869,10 +872,10 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": []
+"values": [ExtResource("11_u8erc")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -905,7 +908,7 @@ tracks/3/path = NodePath("Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"times": PackedFloat32Array(0, 0.142857, 0.285714, 0.428571),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [6, 7, 8, 9]
@@ -917,9 +920,12 @@ tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.307692),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.142857, 0.428571),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"can_attack3"
+}, {
 "args": [],
 "method": &"after_attack"
 }]
@@ -931,10 +937,89 @@ tracks/5/path = NodePath("SwordHitBox/CollisionShape2D:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.0769231, 0.307692),
+"times": PackedFloat32Array(0.142857, 0.18),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_k05g3"]
+resource_name = "test_attack3"
+length = 0.6
+step = 0.0225
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_u8erc")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [9, 10, 11, 12, 13]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SwordHitBox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.285714, 0.318182),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"after_attack"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f1dlp"]
@@ -953,7 +1038,8 @@ _data = {
 &"pray": SubResource("Animation_3krfc"),
 &"roll": SubResource("Animation_surom"),
 &"test_attack1": SubResource("Animation_npudp"),
-&"test_attack2": SubResource("Animation_73kqu")
+&"test_attack2": SubResource("Animation_73kqu"),
+&"test_attack3": SubResource("Animation_k05g3")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_01s40"]
@@ -964,10 +1050,11 @@ height = 132.0
 size = Vector2(43, 88)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_npudp"]
-size = Vector2(117, 107)
+size = Vector2(149, 107)
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 17
+scale = Vector2(0.85, 0.85)
+collision_mask = 4208
 script = ExtResource("1_hcia3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -997,6 +1084,9 @@ wait_time = 0.03
 one_shot = true
 
 [node name="PlayerHurtBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 256
+script = ExtResource("12_npudp")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtBox"]
@@ -1004,24 +1094,35 @@ position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_sc412")
 
 [node name="SwordHitBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 512
+script = ExtResource("13_73kqu")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwordHitBox"]
-position = Vector2(53.5, -5)
+position = Vector2(69.5, -5)
 shape = SubResource("RectangleShape2D_npudp")
 disabled = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, -200)
-limit_top = 200
-limit_bottom = 0
-position_smoothing_enabled = true
-rotation_smoothing_enabled = true
-
-[node name="AttackComboTimer" type="Timer" parent="."]
+[node name="AttackComboTimer2" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
 
+[node name="AttackComboTimer3" type="Timer" parent="."]
+wait_time = 0.45
+one_shot = true
+
+[node name="Keys" type="Node2D" parent="."]
+
+[node name="F-Key" parent="Keys" instance=ExtResource("12_mbef4")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(3, -120)
+
 [connection signal="timeout" from="RollTimer" to="." method="_on_roll_timer_timeout"]
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
-[connection signal="timeout" from="AttackComboTimer" to="." method="_on_attack_combo_timer_timeout"]
+[connection signal="area_entered" from="PlayerHurtBox" to="PlayerHurtBox" method="_on_area_entered"]
+[connection signal="body_entered" from="PlayerHurtBox" to="PlayerHurtBox" method="_on_body_entered"]
+[connection signal="area_entered" from="SwordHitBox" to="SwordHitBox" method="_on_area_entered"]
+[connection signal="body_entered" from="SwordHitBox" to="SwordHitBox" method="_on_body_entered"]
+[connection signal="timeout" from="AttackComboTimer2" to="." method="_on_attack_combo_timer_timeout"]
+[connection signal="timeout" from="AttackComboTimer3" to="." method="_on_attack_combo_timer_3_timeout"]

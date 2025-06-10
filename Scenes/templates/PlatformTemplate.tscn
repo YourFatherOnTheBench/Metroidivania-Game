@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://ducjdx7wlh4gu"]
+
+[node name="Platform" type="StaticBody2D"]
+collision_layer = 32
